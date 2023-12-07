@@ -35,10 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String inputNumber1 = editText1.getText().toString();
             String inputNumber2 = editText2.getText().toString();
 
-            if (TextUtils.isEmpty(inputNumber1) || TextUtils.isEmpty(inputNumber2)) {
-                Toast.makeText(this, "Ingrese ambos números", Toast.LENGTH_SHORT).show();
-                return;
-            }
+            if (extracted(inputNumber1, inputNumber2)) return;
 
             float number1 = Float.parseFloat(inputNumber1);
             float number2 = Float.parseFloat(inputNumber2);
@@ -50,6 +47,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Ingrese números válidos", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private boolean extracted(String inputNumber1, String inputNumber2) {
+        if (TextUtils.isEmpty(inputNumber1) || TextUtils.isEmpty(inputNumber2)) {
+            Toast.makeText(this, "Ingrese ambos números", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return false;
     }
 
 }
